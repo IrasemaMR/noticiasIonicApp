@@ -1,0 +1,94 @@
+<ion-content>
+    <ion-slides class="mainSlide" #slidePrincipal>
+        <ion-slide>
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="/assets/img/logo3.png"></ion-img>
+                    <h4>Bienvenido a la App de Noticias</h4>
+                    <p>Registra tu correo electrónico, te enviaremos un código seguridad para validarlo.</p>
+                </ion-card-header>
+
+                <form (ngSubmit)="login( fLogin )" #fLogin="ngForm">
+                    <ion-grid fixed>
+                        <ion-row>
+                            <ion-col>
+                                <ion-list class="ion-no-padding">
+                                    <ion-item >
+                                        <ion-icon color="primary" name="mail" slot="start"></ion-icon>
+                                        <!-- <ion-label position="floating">Usuario o Correo Electrónico</ion-label> -->
+                                        <ion-input placeholder="Usuario o Correo Electrónico"
+                                            name="idUsuario" type="email" [(ngModel)]="usuarioLogin.correo"
+                                            required="required"></ion-input>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-button type="submit" color="primary" shape="round">Registrar</ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <a class="texto-blanco" (click)="mostrarRegistro()">Ya tengo el código</a>
+                            </ion-col>
+                        </ion-row>
+                        <br>
+                        <ion-row>
+                            <ion-col>
+                                <ion-label class="ion-text-center" class="creditos">NOTICIAS APP Versión {{version}} - © IRASEMA</ion-label>
+                            </ion-col>
+                        </ion-row>
+                        <br>
+                    </ion-grid>
+                </form>
+            </ion-card>
+
+        </ion-slide>
+
+        <ion-slide>
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="/assets/img/logo3.png"></ion-img>
+                    <h4>Gracias por registrarte</h4>
+                    <p>Ingresa el código de seguridad que hemos enviado a tu correo.</p>
+                </ion-card-header>
+
+                <form (ngSubmit)="validar( fValidar )" #fValidar="ngForm">
+                    <ion-row>
+                        <ion-col>
+                            <ion-list class="ion-no-padding">
+                                <ion-item class="ion-no-margin">
+                                    <ion-icon color="primary" name="mail" slot="start"></ion-icon>
+                                    <ion-input placeholder="Correo electrónico" name="correo" type="email" [(ngModel)]="usuarioRegistro.correo" required="required"></ion-input>
+                                </ion-item>
+                                <ion-item class="ion-no-margin">
+                                    <ion-icon color="primary" name="key" slot="start"></ion-icon>
+                                    <ion-input placeholder="Código de validación" name="codigoValida" type="text" [(ngModel)]="usuarioRegistro.codigoValida" required="required"></ion-input>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" color="primary" shape="round">Aceptar</ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <!-- <span class="texto-blanco"> Volver al </span> -->
+                            <a (click)="mostrarLogin()">Volver a solicitar el código</a>
+                        </ion-col>
+                    </ion-row>
+                    <br>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label class="ion-text-center" class="creditos">NOTICIAS APP Versión {{version}} - © IRASEMA</ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <br>
+                </form>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

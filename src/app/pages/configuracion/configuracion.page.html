@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-segment color="primary">
+        <ion-thumbnail>
+            <img src="/assets/img/logo2.png" />
+        </ion-thumbnail>
+        <ion-label>
+            <ion-title>Noticias</ion-title>
+        </ion-label>
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4"></ion-col>
+            <ion-col size="4">
+                <ion-img src="/assets/img/logo-empresa2.jpg"></ion-img>
+            </ion-col>
+            <ion-col size="4"></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-text class="ion-text-center">
+                    <h5>{{user.empresa}}</h5>
+                    <h6>{{user.correo}}</h6>
+                    <h5></h5>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    
+    <ion-list class="ion-no-padding">
+        <ion-item-divider mode="ios"></ion-item-divider>
+        <ion-item (click)="cerrarSesion()" detail>
+            <ion-icon slot="start" name="close-outline" color="primary"></ion-icon>
+            <ion-label>Desvincular cuenta</ion-label>
+        </ion-item>
+        
+        <ion-item-divider mode="ios"></ion-item-divider>
+        <ion-item>
+            <ion-icon slot="start" name="notifications-outline" color="primary"></ion-icon>
+            <ion-label>Recibir Notificaciones</ion-label>
+            <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon slot="start" name="flower-outline" color="primary"></ion-icon>
+            <ion-label>Algo más</ion-label>
+            <ion-toggle [(ngModel)]="xxxxx"></ion-toggle>
+        </ion-item>
+        <ion-item-divider mode="ios"></ion-item-divider>
+    </ion-list>
+</ion-content>

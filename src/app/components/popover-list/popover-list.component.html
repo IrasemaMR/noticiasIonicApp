@@ -1,0 +1,7 @@
+<ion-list>
+    <div *ngFor="let item of items">
+        <ion-item (click)="seleccionar(item)" mode='ios'>
+            <ion-label>{{item}}</ion-label>
+        </ion-item>
+    </div>
+</ion-list>

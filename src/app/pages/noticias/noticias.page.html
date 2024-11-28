@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-segment color="primary">
+        <ion-thumbnail>
+            <img src="/assets/img/logo2.png" />
+        </ion-thumbnail>
+        <ion-label>
+            <ion-title>Noticias</ion-title>
+        </ion-label>
+    </ion-segment>
+</ion-header>
+
+<ion-content scrollEvents="true">
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)" mode="ios">
+        <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Desliza para sincronizar"
+        refreshingSpinner="circles"
+        refreshingText="Actualizando...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-toolbar>
+        <ion-buttons slot="primary">
+            <ion-button (click)="cambiarCategoria($event)">
+                <ion-icon color="primary" slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title color="primary" size="small">CATEGORIA: {{categoriaSeleccionada}}</ion-title>
+    </ion-toolbar>
+
+    <ion-fab *ngIf="verFab" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" translucent="true" mode="ios" (click)="scrollToTop()">
+            <ion-icon name="arrow-up-circle-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+
+    <ion-grid class="ion-no-padding">
+        <ion-row>
+            <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12">
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>15/05/2011 Fuente.com</ion-card-subtitle>
+                        <ion-card-title (click)="abrirNoticia(i)">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat itaque quam explicabo minus possimus iure alias dolore error, quos deleniti nobis maiores voluptates</ion-card-title>
+                    </ion-card-header>
+                    <video src="https://player.vimeo.com/external/499168140.sd.mp4?s=2e3f10847456da44de35b62ce6abf67820db7825&profile_id=139&oauth2_token_id=57447761" controls></video>
+                    <ion-card-content>
+                        <p>A narrow wedge of light from a half-open service hatch at the clinic, Molly took him to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the wall between the bookcases, its distorted face sagging to the bare concrete floor. All the speed he took, all the turns he’d taken and the amplified breathing of the console in faded pinks and yellows. He’d waited in the tunnel’s ceiling.</p>
+                    </ion-card-content>
+                </ion-card>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>15/05/2011 MyFuente.com</ion-card-subtitle>
+                        <ion-card-title (click)="abrirNoticia(i)">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat itaque quam explicabo minus possimus iure alias dolore error, quos deleniti nobis maiores voluptates</ion-card-title>
+                    </ion-card-header>
+
+                    <audio src="../../../assets/audio/Andrea Bocelli & Sarah Brightman - Time To Say Goodbye.mp3" controls></audio>
+
+                    <ion-card-content>
+                        <p>A narrow wedge of light from a half-open service hatch at the clinic, Molly took him to the Tank War, mouth touched with hot gold as a gliding cursor struck sparks from the wall between the bookcases, its distorted face sagging to the bare concrete floor. All the speed he took, all the turns he’d taken and the amplified breathing of the console in faded pinks and yellows. He’d waited in the tunnel’s ceiling.</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col *ngFor="let noticia of noticias; let i = index" size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12">
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>{{noticia.fecha | date:'dd/MM/yyyy HH:mm'}} {{noticia.fuente}}</ion-card-subtitle>
+                        <ion-card-title (click)="abrirNoticia(i)">{{noticia.titulo}}</ion-card-title>
+                    </ion-card-header>
+
+                    <ion-img (click)="abrirNoticia(i)" *ngIf="noticia.urlImagen" [src]="noticia.urlImagen"></ion-img>
+                    <!-- <ion-img (click)="abrirNoticia()" [src]="noticia.urlImagen"></ion-img> -->
+
+                    <ion-card-content>
+                        <p>{{noticia.detalle}}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- <ion-infinite-scroll threshold="20%" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="obtenerNoticias(false, $event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>
